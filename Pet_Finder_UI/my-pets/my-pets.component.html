@@ -1,0 +1,21 @@
+<header class="my-pets-header">
+    <img src="assets/logo.png" alt="PetFinder Logo" class="logo" />
+</header>
+
+<div class="text-center">
+    <button (click)="goBack()" class="btn btn-secondary">Back to Home</button>
+</div>
+
+<ng-container *ngFor="let pet of pets">
+    <div class="pet-card" *ngIf="pet.isLost">
+        <div class="pet-profile">
+            <img [src]="pet.imageUrl" alt="Pet photo" />
+        </div>
+        <div class="pet-details">
+            <p><strong>Name:</strong> {{ pet.name }}</p>
+            <p><strong>Contact details:</strong> {{ pet.contactInfo }}</p>
+            <p><strong>Lost at:</strong> {{ pet.location }}</p>
+            <button *ngIf="pet.id" (click)="markAsFound(pet.id)">Found</button>
+        </div>
+    </div>
+</ng-container>
