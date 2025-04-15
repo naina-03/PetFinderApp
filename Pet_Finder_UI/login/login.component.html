@@ -1,0 +1,20 @@
+<div style="height: 100vh; display: flex; justify-content: center; align-items: start;">
+    <div style="margin-top: 10vh; text-align: left;">
+        <h2 style="text-align: center;">Login</h2>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div style="margin-bottom: 10px;">
+                <label for="email">Email:</label><br />
+                <input type="email" id="email" name="email" [(ngModel)]="email" required
+                    placeholder="Enter your email" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label for="password">Password:</label><br />
+                <input type="password" id="password" name="password" [(ngModel)]="password" required
+                    placeholder="Enter your password" />
+            </div>
+            <div style="text-align: center;">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
