@@ -1,0 +1,58 @@
+<div class="add-pet-wrapper">
+    <h2>Add Pet</h2>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="add-pet-wrapper">
+    <form class="pet-form" #petForm="ngForm" (ngSubmit)="submitForm()" novalidate>
+
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="pet.name" required />
+            <div class="error" *ngIf="petForm.submitted && !pet.name">Name is required.</div>
+        </div>
+
+        <div class="form-row">
+            <label for="description">Description:</label>
+            <input type="text" id="description" [(ngModel)]="pet.description" name="description" required />
+        </div>
+
+        <div class="form-row">
+            <label for="contact">Contact Details:</label>
+            <input type="text" id="contact" name="contactInfo" [(ngModel)]="pet.contactInfo" required />
+            <div class="error" *ngIf="petForm.submitted && !pet.contactInfo">Contact info is required.</div>
+        </div>
+
+        <div class="form-row">
+            <label for="lost">Lost at:</label>
+            <input type="text" id="lost" name="location" [(ngModel)]="pet.location" required />
+            <div class="error" *ngIf="petForm.submitted && !pet.location">Location is required.</div>
+        </div>
+
+        <div class="form-row image-upload-row">
+            <label for="imageUrl">Pet Image:</label>
+            <div class="image-input-wrapper">
+                <input type="text" id="imageUrl" placeholder="Image URL" [(ngModel)]="imageUrl" name="imageUrl" readonly
+                    class="image-url-box" />
+
+                <input type="file" id="imageUpload" accept="image/*" (change)="onFileSelected($event)" />
+                <label for="imageUpload" class="upload-btn">Upload</label>
+            </div>
+        </div>
+
+        <div *ngIf="imageUrl" class="image-preview">
+            <img [src]="imageUrl" alt="Pet Preview" />
+        </div>
+
+        <div class="form-buttons">
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="submit" [disabled]="!petForm.form.valid">Submit</button>
+        </div>
+
+    </form>
+
+    <div *ngIf="showSuccessMessage" class="success-message">
+        Pet added successfully!
+    </div>
+</div>
